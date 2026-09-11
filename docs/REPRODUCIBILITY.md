@@ -46,4 +46,4 @@ python import_labels.py --help
 
 ## Figures
 
-Manuscript figures in `figures/` correspond to the Data in Brief draft in `manuscript/`.
+Figures in `figures/` are the locked manuscript figures (PNG + PDF).

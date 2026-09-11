@@ -9,7 +9,6 @@
 | Split | **18 / 3 / 4** train / val / test **by fire** |
 | Baseline | ResNet-34 U-Net · test fire IoU **0.837** |
 | Data | [Zenodo DOI 10.5281/zenodo.22713948](https://doi.org/10.5281/zenodo.22713948) |
-| Paper | Data in Brief manuscript draft in `manuscript/` |
 
 Authors: **Shreyan Mitra**¹, **Mohammadreza Narimani**²\*, **Parastoo Farajpoor**²  
 ¹ California High School, San Ramon, CA 94583, USA  
@@ -37,7 +36,6 @@ import_labels.py         import analyst masks + score agreement
 make_relabel_batch.py    optional larger-canvas relabel export
 label_batch/             labelling protocol + 233 hand masks
 figures/                 manuscript Figs. 1–9 (PNG/PDF)
-manuscript/              Data in Brief draft (.docx)
 docs/                    data dictionary + reproducibility notes
 ```
 
