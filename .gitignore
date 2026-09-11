@@ -1,0 +1,23 @@
+# Environment
+.venv/
+__pycache__/
+*.py[cod]
+.DS_Store
+.idea/
+.vscode/
+
+# Large data (use Zenodo or rebuild)
+active_fire_dataset/
+label_batch/images/
+relabel_batch/
+data/*.geojson
+data/*.npz
+*.pt
+history.csv
+predictions/
+aug_preview/
+
+# Local scratch
+_kaggle_test.zip
+_pdf_extract*.txt
+*.pyc

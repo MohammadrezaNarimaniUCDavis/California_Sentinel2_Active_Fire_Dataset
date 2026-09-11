@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use this software or dataset, please cite it as below."
+title: "California Sentinel-2 Active-Fire Segmentation Dataset"
+type: software
+authors:
+  - family-names: Mitra
+    given-names: Shreyan
+    affiliation: "California High School, San Ramon, CA 94583, USA"
+  - family-names: Narimani
+    given-names: Mohammadreza
+    affiliation: "Department of Biological and Agricultural Engineering, University of California, Davis, Davis, CA 95616, USA"
+  - family-names: Farajpoor
+    given-names: Parastoo
+    affiliation: "Department of Biological and Agricultural Engineering, University of California, Davis, Davis, CA 95616, USA"
+keywords:
+  - active fire
+  - Sentinel-2
+  - SWIR
+  - semantic segmentation
+  - weak supervision
+  - California wildfire
+license: MIT
+repository-code: "https://github.com/MohammadrezaNarimaniUCDavis/California_Sentinel2_Active_Fire_Dataset"
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.22713948
+url: "https://doi.org/10.5281/zenodo.22713948"

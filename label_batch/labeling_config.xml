@@ -1,0 +1,9 @@
+<View>
+  <Header value="Mark pixels showing ACTIVE FLAME only"/>
+  <Image name="chip" value="$image" zoom="true" zoomControl="true"
+         brightnessControl="true" contrastControl="true"/>
+  <BrushLabels name="mask" toName="chip">
+    <Label value="active_fire" background="#D81B7A"/>
+    <Label value="uncertain" background="#E8B33A"/>
+  </BrushLabels>
+</View>
