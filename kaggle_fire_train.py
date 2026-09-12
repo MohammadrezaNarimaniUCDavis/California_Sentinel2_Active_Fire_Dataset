@@ -597,10 +597,15 @@ def train(rows, dataset: Path, mean, std, args) -> int:
     torch.manual_seed(args.seed)
     np.random.seed(args.seed)
     device = "cuda" if torch.cuda.is_available() else "cpu"
+    import torchvision
+    log(f"torch {torch.__version__}  torchvision {torchvision.__version__}  "
+        f"cuda {torch.version.cuda if device == 'cuda' else 'n/a'}")
     if device == "cuda":
         torch.backends.cudnn.benchmark = True
+        log(f"GPU: {torch.cuda.get_device_name(0)}")
     log(f"\ndevice: {device}"
-        + (f" ({torch.cuda.get_device_name(0)})" if device == "cuda" else ""))
+        + (f" ({torch.cuda.get_device_name(0)})" if device == "cuda" else "")
+        + f"  seed={args.seed}")
 
     cfg = AugConfig.from_args(args)
     log(f"augmentation: {cfg}")

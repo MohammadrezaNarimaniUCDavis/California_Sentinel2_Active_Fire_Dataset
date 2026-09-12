@@ -7,7 +7,16 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 
-Training additionally needs `torch`, `torchvision`, and (for metrics helpers) a recent NumPy/Pillow stack. GPU is recommended for the 40-epoch baseline.
+Training notes and the Kaggle docker digest for the published baseline are in
+`requirements-train.txt` and `docs/REFERENCE_RUN.md`.
+
+GPU is recommended for the 40-epoch baseline.
+
+## Incident selection (wildfire only)
+
+`src/fires.py` queries NIFC WFIGS with `attr_IncidentTypeCategory='WF'`
+(prescribed-fire `RX` excluded). All 25 published incidents were verified as
+`WF` (see `docs/incident_type_verification.csv`).
 
 ## Data
 
@@ -30,10 +39,15 @@ python kaggle_fire_train.py --no-train          # verify split
 python kaggle_fire_train.py --epochs 40         # train + evaluate
 ```
 
-Expected reference operating point (validation-swept threshold ≈ 0.99):
+The archived reference checkpoint used the **torchvision ResNet-34 U-Net
+fallback** (not `segmentation_models_pytorch`). See `docs/REFERENCE_RUN.md`.
 
-- Val fire IoU ≈ 0.876 (best epoch ~35)
+Expected reference operating point (validation-swept threshold = 0.99):
+
+- Val fire IoU ≈ 0.876 (best epoch 35)
 - Test fire IoU ≈ 0.837 · precision ≈ 0.897 · recall ≈ 0.926
+
+Validation history: `docs/reference_run/history.csv`.
 
 ## Analyst review
 

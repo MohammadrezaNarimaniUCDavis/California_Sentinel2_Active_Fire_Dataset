@@ -1,0 +1,36 @@
+# Training stack notes for the reference baseline
+
+The reported baseline (test fire IoU 0.837) was trained on **Kaggle GPU**
+(Nvidia Tesla T4) using the notebook docker image:
+
+```
+gcr.io/kaggle-private-byod/python@sha256:37c64f7dd9c54116ecd1bcc88817c5469b88387388fade02bfa8bf3fc647d461
+```
+
+That image supplies PyTorch / torchvision / CUDA. Exact pin versions were not
+frozen at publish time; see `docs/REFERENCE_RUN.md`.
+
+## Dataset / STAC construction (CPU)
+
+```
+rasterio
+pystac-client
+pillow
+numpy
+```
+
+(see also `requirements.txt`)
+
+## Segmentation training
+
+Install a current PyTorch+torchvision CUDA build matching your machine, e.g.
+from https://pytorch.org. Optional:
+
+```
+segmentation_models_pytorch
+```
+
+**Warning:** the archived reference checkpoint used the **torchvision U-Net
+fallback**, not smp. If smp is installed, `kaggle_fire_train.py` will prefer
+it and results may differ. To mirror the reference path, omit smp or confirm
+the log line `model: torchvision resnet34-UNet (imagenet init)`.

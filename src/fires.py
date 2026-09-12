@@ -50,6 +50,7 @@ class Fire:
     south: float
     east: float
     north: float
+    incident_type: str = "WF"  # WFIGS attr_IncidentTypeCategory (WF=wildfire)
     geometry: dict | None = field(default=None, repr=False)
 
     @property
@@ -116,13 +117,15 @@ def fetch(
     else:
         query = urllib.parse.urlencode(
             {
+                # WF = wildfire; exclude RX (prescribed fire) and other categories.
                 "where": (
                     f"attr_POOState='{state}' AND poly_GISAcres>{min_acres} AND "
-                    f"attr_FireDiscoveryDateTime>DATE '{since.isoformat()}'"
+                    f"attr_FireDiscoveryDateTime>DATE '{since.isoformat()}' AND "
+                    f"attr_IncidentTypeCategory='WF'"
                 ),
                 "outFields": (
                     "poly_IncidentName,attr_FireDiscoveryDateTime,poly_GISAcres,"
-                    "attr_ContainmentDateTime"
+                    "attr_ContainmentDateTime,attr_IncidentTypeCategory"
                 ),
                 "returnGeometry": "true",
                 "outSR": "4326",
@@ -159,6 +162,7 @@ def fetch(
             south=min(lats),
             east=max(lons),
             north=max(lats),
+            incident_type=props.get("attr_IncidentTypeCategory") or "WF",
             geometry=feature["geometry"],
         )
 
