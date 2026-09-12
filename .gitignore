@@ -14,6 +14,7 @@ data/*.geojson
 data/*.npz
 *.pt
 history.csv
+!docs/reference_run/history.csv
 predictions/
 aug_preview/
 
